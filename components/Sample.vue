@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>{{ title }}</h1>
     <h3>Hello, {{ name }}</h3>
     <p>
       {{ reverseName }}
@@ -8,11 +9,21 @@
     <p :class="['hide', { seven: num === 7 }]">7回クリックしたら表示</p>
 
     <button type="button" name="button" @click="plus">クリック{{ num }}</button>
+
+    <div class="slot">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    title: {
+      type: String,
+      default: 'Default title',
+    },
+  },
   data() {
     return {
       name: 'mogihiroki',
